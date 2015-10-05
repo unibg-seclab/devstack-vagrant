@@ -16,37 +16,57 @@ that once you bring up this environment you will be able to ssh
 stack@api (or whatever your hostname is) from any machines on your
 network.
 
-Vagrant Setup
+Getting Started
 ------------------------
 
-Install vagrant & virtual box
+- Install vagrant & virtual box
 
-Configure a base ``~/.vagrant.d/Vagrantfile`` to set your VM size. If you
-have enough horsepower you should make the file something like:
+- Configure a base ``~/.vagrant.d/Vagrantfile`` to set your VM size. If you
+  have enough horsepower you should make the file something like:
 
-    VAGRANTFILE_API_VERSION = "2"
+      VAGRANTFILE_API_VERSION = "2"
 
-    Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-        config.vm.provider :virtualbox do |vb|
+      Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+          config.vm.provider :virtualbox do |vb|
 
-             # Use VBoxManage to customize the VM. For example to change memory:
-             vb.customize ["modifyvm", :id, "--memory", "8192"]
-             vb.customize ["modifyvm", :id, "--cpus", "4"]
-         end
-    end
+               # Use VBoxManage to customize the VM. For example to change memory:
+               vb.customize ["modifyvm", :id, "--memory", "8192"]
+               vb.customize ["modifyvm", :id, "--cpus", "4"]
+           end
+      end
 
-You can probably get away with less cpus, and 4096 MB of memory, but
-the above is recommended size.
+  For our tests, ``2048`` for the memory and ``2`` for cpus should be enough.
 
-If the used hostnames in the ``config.yaml`` file (variable ``hostname_manager``
-and ``hostname_compute``) are not resolvable you have to install the
-``vagrant-hostmanager`` plugin (``vagrant plugin install vagrant-hostmanager``).
+- Install the ``vagrant-hostmanager`` and ``vagrant-cachier`` plugins:
 
-If the nodes are still not able to communicate to each other even after
-installing the ``vagrant-hostnamanger`` plugin (for example you get errors about
-the compute node not being able to communicate to *cinder c-api* during the
-*vagrant up* phase), set the variable ``use_ip_resolver`` in the ``config.yaml``
-file to ``true``, in order to obtain the correct nodes ip.
+        vagrant plugin install vagrant-hostmanager
+        vagrant plugin install vagrant-cachier
+
+- Check the configuration defined in the ``config.yaml`` file. You have to
+  change at least the ``bridge_int`` value, setting the interface name
+  on which you want the devstack nodes to get bridged (the one you are
+  connected to; use ``ifconfig`` and use exactly the name showed there).
+
+- Start the vagrant boxes:
+
+        vagrant up
+
+- Check that the boxes are working. From inside the repository directory:
+
+  - get the status of the boxes with:
+
+          vagrant status
+
+  - connect via ssh to the machines using:
+
+          vagrant ssh BOXNAME
+
+- If everything worked correctly you should be able to open the page
+  <http://manager.openstack.site> .
+
+
+- You can stop the boxes with ``vagrant halt`` and destroy them with
+  ``vagrant destroy``.
 
 
 Local Setup
