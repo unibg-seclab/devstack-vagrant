@@ -27,7 +27,7 @@ setup_mode: devstack
 # descriptor of the interface. On some systems this can be something annoying
 # like 'en1: Wi-Fi (Airport)'. Vagrant will not use this setting unless you get
 # it exactly right.
-#bridge_int: eth1
+bridge_int: CHANGEME
 
 # Enable the vagrant-hostmanager's ip_resolver in order to get the correct
 # nodes ip. You should install the vagrant-hostmanager plugin and enable this
@@ -61,7 +61,7 @@ use_ip_resolver: true
 
 # It is possible to use a hostonly-network instead of a bridged network when
 # setting the parameter use_bridge to false.
-use_bridge: false
+use_bridge: true
 
 # When using a hostonly-network it is possible to specify static IP addresses
 # using the following parameters. If those parameters are not specified DHCP
