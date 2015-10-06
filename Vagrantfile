@@ -146,8 +146,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "manager", primary: true do |manager|
     configure_vm("manager", manager.vm, conf)
+    manager.vm.provision "shell", path: "startup/rabbit.sh"
+    manager.vm.provision "shell", path: "startup/keystone.sh"
     manager.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
     manager.vm.network "forwarded_port", guest: 6080, host: 6080, host_ip: "127.0.0.1"
+    manager.vm.network "forwarded_port", guest: 9311, host: 9311, host_ip: "127.0.0.1"
   end
 
   if conf['hostname_compute']
