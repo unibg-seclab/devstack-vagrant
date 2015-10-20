@@ -35,7 +35,7 @@ Getting Started
            end
       end
 
-  For our tests, ``2048`` for the memory and ``2`` for cpus should be enough.
+  For our tests, ``4096`` for the memory and ``2`` for cpus should be enough.
 
 - Install the ``vagrant-hostmanager`` and ``vagrant-cachier`` plugins:
 
