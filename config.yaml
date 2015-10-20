@@ -44,7 +44,7 @@ use_ip_resolver: true
 #devstack_git: /home/vagrant/openstack/devstack
 
 # If you have code on a different branch than master, you can set it here.
-#devstack_branch: compute_err_exit
+devstack_branch: stable/kilo
 
 # You can specify a proxy, for example https://github.com/tmatilai/polipo-box,
 # to be used for HTTP connections to speed things up.
