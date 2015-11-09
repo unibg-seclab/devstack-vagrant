@@ -4,4 +4,5 @@ node default {
   include user::vagrant
   include grenade
   include devstack
+  include barbican
 }
