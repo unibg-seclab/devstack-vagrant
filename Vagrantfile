@@ -148,6 +148,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     configure_vm("manager", manager.vm, conf)
     manager.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
     manager.vm.network "forwarded_port", guest: 6080, host: 6080, host_ip: "127.0.0.1"
+    # Open Keystone ports
+    manager.vm.network "forwarded_port", guest: 5000, host: 5000, host_ip: "127.0.0.1"
+    manager.vm.network "forwarded_port", guest: 35357, host: 35357, host_ip: "127.0.0.1"
+    # Open Barbican port
     manager.vm.network "forwarded_port", guest: 9311, host: 9311, host_ip: "127.0.0.1"
   end
 
