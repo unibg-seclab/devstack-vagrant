@@ -46,6 +46,10 @@ use_ip_resolver: true
 # If you have code on a different branch than master, you can set it here.
 devstack_branch: stable/kilo
 
+# Barbican branch to download (default 'stable/kilo'). Use the 'master' branch
+# at your own risk.
+barbican_branch: stable/kilo
+
 # You can specify a proxy, for example https://github.com/tmatilai/polipo-box,
 # to be used for HTTP connections to speed things up.
 #proxy: http://10.0.10.30:8123/
@@ -76,4 +80,4 @@ use_bridge: true
 # Extra services to enable on the manager node, a space separated list of
 # additional services to enable on the manager node. For example, to enable
 # Swift, just uncomment the next line.
-manager_extra_services: s-proxy s-object s-container s-account
+manager_extra_services: s-proxy s-object s-container s-account rabbit mysql key barbican
