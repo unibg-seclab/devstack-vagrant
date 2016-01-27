@@ -16,6 +16,14 @@ RECLONE="True"
 
 DATABASE_TYPE=mysql
 
+# barbican configuration
+
+<% if defined?(@barbican_branch) %>
+BARBICAN_BRANCH="stable/kilo"
+<% else %>
+BARBICAN_BRANCH="<%= @barbican_branch %>"
+<% end %>
+
 # networking configuration parameters
 
 GUEST_INTERFACE_DEFAULT=eth1
