@@ -47,12 +47,4 @@ class barbican
     require => Exec['barbican_clone'],
   }
 
-  file { "/etc/profile.d/Z99-barbican.sh":
-    ensure => present,
-    owner => 'root',
-    group => 'root',
-    mode => '0755',
-    source => 'puppet:///modules/barbican/Z99-barbican.sh'
-  }
-
 }
