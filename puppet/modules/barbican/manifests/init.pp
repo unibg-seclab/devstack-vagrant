@@ -15,8 +15,10 @@ class barbican
     ensure => latest
   }
 
-  if $devstack_branch {
+  if $barbican_branch {
     $branch = $barbican_branch
+  } elsif $devstack_branch {
+    $branch = $devstack_branch
   } else {
     $branch = 'stable/kilo'
   }
@@ -45,6 +47,29 @@ class barbican
     ensure => present,
     source  => "$barbican_dir/contrib/devstack/extras.d/70-barbican.sh",
     require => Exec['barbican_clone'],
+  }
+
+  file { "/etc/profile.d/Z99-barbican.sh":
+    owner => 'root',
+    group => 'root',
+    mode => '0755',
+    content => template('barbican/Z99-barbican.erb'),
+  }
+
+  if $hostname_manager {
+    $barbican_host = $hostname_manager
+  } else {
+    $barbican_host = 'localhost'
+  }
+
+  exec { 'barbican_set_host_href':
+    require => Exec['barbican_clone'],
+    path => '/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:.',
+    user => 'stack',
+    group => 'stack',
+    command => "sed -i 's/localhost:9311/$barbican_host:9311/g' $barbican_dir/etc/barbican/*.conf",
+    logoutput => true,
+    timeout => 10,
   }
 
 }
