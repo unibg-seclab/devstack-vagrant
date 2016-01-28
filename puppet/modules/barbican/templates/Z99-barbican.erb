@@ -1,0 +1,7 @@
+#!/bin/bash
+
+<% if defined?(@barbican_branch) %>
+export BARBICAN_BRANCH="<%= @barbican_branch %>"
+<% else %>
+export BARBICAN_BRANCH="stable/kilo"
+<% end %>
