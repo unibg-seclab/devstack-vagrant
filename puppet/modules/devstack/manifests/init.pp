@@ -10,13 +10,15 @@ class devstack(
   if $devstack_git {
     $source = $devstack_git
   } else {
-    $source = 'https://github.com/openstack-dev/devstack'
+    $source = 'https://github.com/unibg-seclab/devstack'
+    #$source = 'https://github.com/openstack-dev/devstack'
   }
 
   if $devstack_branch {
     $branch = $devstack_branch
   } else {
-    $branch = 'master'
+    $branch = 'server-side-swift'
+    #$branch = 'master'
   }
 
   exec { 'devstack_clone':
