@@ -41,10 +41,11 @@ use_ip_resolver: true
 #box_url: http://gallifrey/vagrant/devstack-2014-02-19.box
 
 # Non upstream Git URL to fetch Devstack from instead.
-#devstack_git: /home/vagrant/openstack/devstack
+# Get Seclab's devstack repo.
+devstack_git: https://github.com/unibg-seclab/devstack
 
 # If you have code on a different branch than master, you can set it here.
-#devstack_branch: stable/kilo
+# Branch for downloading custom swift.
 devstack_branch: server-side-swift
 
 # Barbican branch to download (default 'stable/kilo'). Use the 'master' branch

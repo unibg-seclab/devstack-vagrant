@@ -114,10 +114,8 @@ function git_timed {
     done
 }
 
-#URL=${1:-https://github.com/openstack-dev/devstack}
-#BRANCH=${2:-master}
-URL=${1:-https://github.com/unibg-seclab/devstack}
-BRANCH=${2:-server-side-swift}
+URL=${1:-https://github.com/openstack-dev/devstack}
+BRANCH=${2:-master}
 LOCAL=${3:-/home/stack/devstack}
 
 set -o xtrace
