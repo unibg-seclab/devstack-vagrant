@@ -44,7 +44,8 @@ use_ip_resolver: true
 #devstack_git: /home/vagrant/openstack/devstack
 
 # If you have code on a different branch than master, you can set it here.
-devstack_branch: stable/kilo
+#devstack_branch: stable/kilo
+devstack_branch: server-side-swift
 
 # Barbican branch to download (default 'stable/kilo'). Use the 'master' branch
 # at your own risk.
