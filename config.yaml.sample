@@ -46,9 +46,11 @@ bridge_int: eth1
 # If you have code on a different branch than master, you can set it here.
 #devstack_branch: compute_err_exit
 
-# Barbican branch to download (default 'stable/kilo'). Use the 'master' branch
-# at your own risk.
-#barbican_branch: stable/kilo
+# Non upstream Git URL to fetch Barbican from instead.
+#barbican_git: /home/vagrant/openstack/barbican
+
+# If you have code on a different branch than master, you can set it here.
+#barbican_branch: compute_err_exit
 
 # You can specify a proxy, for example https://github.com/tmatilai/polipo-box,
 # to be used for HTTP connections to speed things up.
