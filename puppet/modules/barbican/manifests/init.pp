@@ -3,10 +3,16 @@
 
 class barbican
 {
-  $source = 'https://github.com/openstack/barbican.git'
+
   $devstack_dir = '/home/stack/devstack'
   $barbican_dir = '/home/stack/barbican'
   $user = $user::stack::username
+
+  if $barbican_git {
+    $source = $barbican_git
+  } else {
+    $source = 'https://github.com/openstack/barbican.git'
+  }
 
   $libs = [ "python-pip", "python-dev", "libffi-dev",
             "libssl-dev", "libldap2-dev", "libsasl2-dev" ]
