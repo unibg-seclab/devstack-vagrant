@@ -68,14 +68,4 @@ class barbican
     $barbican_host = 'localhost'
   }
 
-  exec { 'barbican_set_host_href':
-    require => Exec['barbican_clone'],
-    path => '/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:.',
-    user => 'stack',
-    group => 'stack',
-    command => "sed -i 's/localhost:9311/$barbican_host:9311/g' $barbican_dir/etc/barbican/*.conf",
-    logoutput => true,
-    timeout => 10,
-  }
-
 }
