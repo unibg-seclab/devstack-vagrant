@@ -2,6 +2,8 @@
 
 <% if defined?(@barbican_branch) %>
 export BARBICAN_BRANCH="<%= @barbican_branch %>"
+<% elsif defined?(@devstack_branch) %>
+export BARBICAN_BRANCH="<%= @devstack_branch %>"
 <% else %>
 export BARBICAN_BRANCH="stable/kilo"
 <% end %>
