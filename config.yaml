@@ -44,13 +44,13 @@ use_ip_resolver: true
 #devstack_git: /home/vagrant/openstack/devstack
 
 # If you have code on a different branch than master, you can set it here.
-devstack_branch: stable/kilo
+devstack_branch: stable/liberty
 
 # Non upstream Git URL to fetch Barbican from instead.
 #barbican_git: /home/vagrant/openstack/barbican
 
 # If you have code on a different branch than master, you can set it here.
-barbican_branch: stable/kilo
+barbican_branch: stable/liberty
 
 # You can specify a proxy, for example https://github.com/tmatilai/polipo-box,
 # to be used for HTTP connections to speed things up.
