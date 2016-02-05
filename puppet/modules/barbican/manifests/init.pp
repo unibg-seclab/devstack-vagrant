@@ -26,7 +26,7 @@ class barbican
   } elsif $devstack_branch {
     $branch = $devstack_branch
   } else {
-    $branch = 'stable/kilo'
+    $branch = 'stable/liberty'
   }
 
   exec { 'barbican_clone':
