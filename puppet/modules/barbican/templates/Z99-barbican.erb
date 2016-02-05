@@ -1,5 +1,9 @@
 #!/bin/bash
 
+<% if defined?(@barbican_git) %>
+export BARBICAN_REPO="<%= @barbican_git %>"
+<% end %>
+
 <% if defined?(@barbican_branch) %>
 export BARBICAN_BRANCH="<%= @barbican_branch %>"
 <% elsif defined?(@devstack_branch) %>
