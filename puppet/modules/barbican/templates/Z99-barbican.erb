@@ -1,0 +1,15 @@
+#!/bin/bash
+
+<% if defined?(@barbican_branch) %>
+export BARBICAN_BRANCH="<%= @barbican_branch %>"
+<% elsif defined?(@devstack_branch) %>
+export BARBICAN_BRANCH="<%= @devstack_branch %>"
+<% else %>
+export BARBICAN_BRANCH="stable/kilo"
+<% end %>
+
+<% if defined?(@hostname_manager) %>
+export BARBICAN_HOST_HREF="http://<%= @hostname_manager %>:9311"
+<% else %>
+export BARBICAN_HOST_HREF="http://localhost:9311"
+<% end %>

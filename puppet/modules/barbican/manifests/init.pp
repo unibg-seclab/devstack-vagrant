@@ -3,10 +3,16 @@
 
 class barbican
 {
-  $source = 'https://github.com/openstack/barbican.git'
+
   $devstack_dir = '/home/stack/devstack'
   $barbican_dir = '/home/stack/barbican'
   $user = $user::stack::username
+
+  if $barbican_git {
+    $source = $barbican_git
+  } else {
+    $source = 'https://github.com/openstack/barbican.git'
+  }
 
   $libs = [ "python-pip", "python-dev", "libffi-dev",
             "libssl-dev", "libldap2-dev", "libsasl2-dev" ]
@@ -15,8 +21,10 @@ class barbican
     ensure => latest
   }
 
-  if $devstack_branch {
+  if $barbican_branch {
     $branch = $barbican_branch
+  } elsif $devstack_branch {
+    $branch = $devstack_branch
   } else {
     $branch = 'stable/kilo'
   }
@@ -45,6 +53,19 @@ class barbican
     ensure => present,
     source  => "$barbican_dir/contrib/devstack/extras.d/70-barbican.sh",
     require => Exec['barbican_clone'],
+  }
+
+  file { "/etc/profile.d/Z99-barbican.sh":
+    owner => 'root',
+    group => 'root',
+    mode => '0755',
+    content => template('barbican/Z99-barbican.erb'),
+  }
+
+  if $hostname_manager {
+    $barbican_host = $hostname_manager
+  } else {
+    $barbican_host = 'localhost'
   }
 
 }

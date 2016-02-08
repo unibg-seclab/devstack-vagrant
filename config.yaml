@@ -48,8 +48,10 @@ devstack_git: https://github.com/unibg-seclab/devstack
 # Branch for downloading custom swift.
 devstack_branch: server-side-swift
 
-# Barbican branch to download (default 'stable/kilo'). Use the 'master' branch
-# at your own risk.
+# Non upstream Git URL to fetch Barbican from instead.
+#barbican_git: /home/vagrant/openstack/barbican
+
+# If you have code on a different branch than master, you can set it here.
 barbican_branch: stable/kilo
 
 # You can specify a proxy, for example https://github.com/tmatilai/polipo-box,
