@@ -52,7 +52,7 @@ devstack_branch: server-side-swift
 #barbican_git: /home/vagrant/openstack/barbican
 
 # If you have code on a different branch than master, you can set it here.
-barbican_branch: stable/kilo
+barbican_branch: stable/liberty
 
 # You can specify a proxy, for example https://github.com/tmatilai/polipo-box,
 # to be used for HTTP connections to speed things up.
