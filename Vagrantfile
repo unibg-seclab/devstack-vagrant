@@ -146,12 +146,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "manager", primary: true do |manager|
     configure_vm("manager", manager.vm, conf)
-    manager.vm.network "forwarded_port", guest: 80,    host: 3000,  host_ip: "127.0.0.1"  # horizon
-    manager.vm.network "forwarded_port", guest: 5000,  host: 5000,  host_ip: "127.0.0.1"  # keystone public
-    manager.vm.network "forwarded_port", guest: 6080,  host: 6080,  host_ip: "127.0.0.1"  # openstack-nova-novncproxy
-    manager.vm.network "forwarded_port", guest: 8080,  host: 8080,  host_ip: "127.0.0.1"  # swift
-    manager.vm.network "forwarded_port", guest: 9311,  host: 9311,  host_ip: "127.0.0.1"  # barbican
-    manager.vm.network "forwarded_port", guest: 35357, host: 35357, host_ip: "127.0.0.1"  # keystone admin
+    if conf["use_bridge"] == false                    # forward ports only if not bridged
+      manager.vm.network "forwarded_port", guest: 80,    host: 3000,  host_ip: "127.0.0.1"  # horizon
+      manager.vm.network "forwarded_port", guest: 5000,  host: 5000,  host_ip: "127.0.0.1"  # keystone public
+      manager.vm.network "forwarded_port", guest: 6080,  host: 6080,  host_ip: "127.0.0.1"  # openstack-nova-novncproxy
+      manager.vm.network "forwarded_port", guest: 8080,  host: 8080,  host_ip: "127.0.0.1"  # swift
+      manager.vm.network "forwarded_port", guest: 9311,  host: 9311,  host_ip: "127.0.0.1"  # barbican
+      manager.vm.network "forwarded_port", guest: 35357, host: 35357, host_ip: "127.0.0.1"  # keystone admin
+    end
   end
 
   if conf['hostname_compute']
