@@ -1,6 +1,6 @@
 # Hostname of the manager and the compute nodes.
-hostname_manager: manager.openstack.site
-hostname_compute: compute.openstack.site
+hostname_manager: seclab-manager.openstack.site
+#hostname_compute: seclab-compute.openstack.site
 
 # The domain names and ips to add in the no_proxy variable (comma separated)
 user_domains: .mycompany.com,10.20.30.40
