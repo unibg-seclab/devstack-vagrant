@@ -82,4 +82,4 @@ use_bridge: true
 # Extra services to enable on the manager node, a space separated list of
 # additional services to enable on the manager node. For example, to enable
 # Swift, just uncomment the next line.
-manager_extra_services: s-proxy s-object s-container s-account rabbit mysql key barbican
+manager_extra_services: s-proxy s-object s-container s-account key barbican
